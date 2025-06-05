@@ -1,0 +1,49 @@
+<div class="container-table">
+  <h1 mat-dialog-title class="title-table">Edição de usuário</h1>
+  <div mat-dialog-content class="content-table">
+    <table cellspacing="0">
+      <thead>
+        <tr>
+          @for(column of columns; track column) {
+          <th>{{ column }}</th>
+          }
+        </tr>
+      </thead>
+      <tbody>
+        @for(payment of payments; track payment.id) {
+        <tr>
+          <td>R${{ payment.value }}</td>
+          <td>{{ payment.type }}</td>
+          <td>{{ payment.payment_date }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+    <h3>Adicionar pagamento</h3>
+    <div style="display: flex; gap: 12px">
+      <mat-form-field class="field">
+        <mat-label>Valor</mat-label>
+        <input matInput [(ngModel)]="payment.value" type="number" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Tipo</mat-label>
+        <mat-select [(ngModel)]="payment.type">
+          <mat-option value="CARD">Cartão</mat-option>
+          <mat-option value="CASH">Dinheiro</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button
+      mat-button
+      cdkFocusInitial
+      (click)="savePayment()"
+      [disabled]="!payment.value && !payment.type"
+    >
+      Adicionar pagamento
+    </button>
+  </div>
+</div>

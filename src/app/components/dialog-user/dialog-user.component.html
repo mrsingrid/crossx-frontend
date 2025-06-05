@@ -1,0 +1,55 @@
+<div class="container">
+  <h1 mat-dialog-title class="title">Edição de usuário</h1>
+  <div mat-dialog-content class="content">
+    <mat-form-field class="field">
+      <mat-label>Nome</mat-label>
+      <input matInput [(ngModel)]="user.name" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Rua</mat-label>
+      <input matInput [(ngModel)]="user.road" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Número</mat-label>
+      <input matInput [(ngModel)]="user.number" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Bairro</mat-label>
+      <input matInput [(ngModel)]="user.district" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Cidade</mat-label>
+      <input matInput [(ngModel)]="user.city" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Estado</mat-label>
+      <input matInput [(ngModel)]="user.state" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Cep</mat-label>
+      <input matInput [(ngModel)]="user.zipcode" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Telefone</mat-label>
+      <input matInput [(ngModel)]="user.phone" />
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button
+      mat-button
+      [mat-dialog-close]="true"
+      cdkFocusInitial
+      (click)="handleSave()"
+    >
+      OK
+    </button>
+  </div>
+</div>

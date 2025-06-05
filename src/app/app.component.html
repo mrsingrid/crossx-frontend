@@ -1,0 +1,88 @@
+<main>
+  <header>
+    <h1>CrossX</h1>
+  </header>
+  <div class="container">
+    <div class="action-container">
+      <button mat-raised-button color="primary" (click)="callDialogAdd()">
+        <mat-icon>add</mat-icon>Criar Usuário
+      </button>
+    </div>
+    <table cellspacing="0">
+      <thead>
+        <tr>
+          @for(column of columns; track column) {
+          <th>{{ column }}</th>
+          }
+        </tr>
+      </thead>
+      <tbody>
+        @for(user of users; track user.id) {
+        <tr>
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>
+          <td>
+            <div
+              class="status"
+              [ngClass]="{
+                success: user?.enrollment,
+                error: !user?.enrollment
+              }"
+            >
+              {{ user?.enrollment ? "Matriculado" : "Sem Matricula" }}
+            </div>
+          </td>
+          <td>
+            {{ user?.enrollment?.registration_date ?? "-" }}
+          </td>
+          <td [width]="300">
+            {{ user.road }}, {{ user.number }}, {{ user.district }},
+            {{ user.city }}, {{ user.state }} - {{ user.zipcode }}
+          </td>
+          <td>{{ user.phone }}</td>
+          <td>
+            <button
+              mat-icon-button
+              class="button-edit"
+              aria-label="Editar"
+              (click)="callDialogEdit(user)"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+
+            <button
+              mat-icon-button
+              class="button-delete"
+              aria-label="Deletar"
+              (click)="deleteUser(user.id)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+
+            <mat-menu #menu="matMenu">
+              <button
+                *ngIf="!user.enrollment"
+                mat-menu-item
+                (click)="createEnrollment(user.id)"
+              >
+                <span>Realizar Matrícula</span>
+              </button>
+              <button
+                mat-menu-item
+                (click)="callDialogPayments(user)"
+                *ngIf="user.enrollment"
+              >
+                <span>Pagamentos</span>
+              </button>
+            </mat-menu>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</main>

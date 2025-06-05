@@ -10,6 +10,31 @@ main {
   color: #3d3d3d;
 }
 
+.container-table {
+  width: 500px;
+  background: #fff;
+  color: #3d3d3d !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-table,
+.title-table {
+  color: #3d3d3d !important;
+}
+
+.content-table {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
 .container {
   width: 100%;
   display: flex;

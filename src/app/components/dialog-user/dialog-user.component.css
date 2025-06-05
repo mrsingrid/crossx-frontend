@@ -1,0 +1,18 @@
+.container {
+  width: 500px;
+  background: #fff;
+  color: #3d3d3d !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.content,
+.title {
+  color: #3d3d3d !important;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
