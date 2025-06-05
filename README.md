@@ -2,6 +2,11 @@
 
 Necessário ter instalado o Node e Angular CLI([Angular CLI](https://github.com/angular/angular-cli) version 19.2.5).
 
+## Install dependencies
+```bash
+npm install
+```
+
 ## Development server
 
 To start a local development server, run:
